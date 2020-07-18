@@ -5,6 +5,7 @@
 #### Paper List
 
 |Week|Name|Ref|
+|---|---|---|
 |1|Double DQN|https://arxiv.org/abs/1509.06461|
 |1|Multi-step TD|https://www.cs.mcgill.ca/~dprecup/courses/RL/Lectures/8-multistep-2019.pdf|
 |2|PER|https://arxiv.org/abs/1511.05952|
