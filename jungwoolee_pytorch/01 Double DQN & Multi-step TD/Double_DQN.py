@@ -84,7 +84,8 @@ class double_dqn():
         # get target
         if self.multi_step == 1: ## TD(0) and 1-step TD
             Q_target_values = self.Q_target_net(next_obs)
-            next_q_action = self.Q_net(next_obs).max(1)[1].unsqueeze(1)## 실제 발생된 next_state를 넣어, target에서 예상되어지는 가치 q_value를 구한다.
+            next_q_action = self.Q_net(next_obs).max(1)[1].unsqueeze(1)## 실제 발생된 next_state를 넣어, 가장 높은 Q-value를 가진 action을 선택한다.
+                                                                       ## unsqueeze는 차원을 맞추기 위해 사용해, 상황에 따라 적절히 바꿔야함.
             target_q_value = Q_target_values.gather(1,next_q_action).view(-1)## max함수를 사용하면 [0]에는 value 값이들어 가 있고 [1]에는 index값이 들어가 있다.
             Y = rewards + masks * self.gamma * target_q_value ## 죽었다면, next가 없으므로 얻어진 reward만 추린다.
         else: ## multi-step TD
