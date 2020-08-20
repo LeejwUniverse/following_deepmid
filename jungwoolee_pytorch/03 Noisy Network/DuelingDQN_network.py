@@ -25,9 +25,9 @@ class Factorised_noisy_layer(nn.Module):
         self.mu_B.data.uniform_(-init_mu, init_mu)
 
     def forward(self, x):
-        self.eps_i.normal_() # assign weight epsilon from normal distribution. register_buffer에 등록된 parameter를 매번 normal 즉 gaussion분포에서 가져옴.
-        self.eps_j.normal_() # assign bias epsilon.
-
+        self.eps_i.normal_() # assign epsilon_i from normal distribution. register_buffer에 등록된 parameter를 매번 normal 즉 gaussion분포에서 가져옴.
+        self.eps_j.normal_() # assign epsilon_j.
+                             # factorised는 epsilon_i와 epsilon_j로 나눠진, 값을 이용해 nosiy를 만들기 위한 epsilon으로 사용한다!
         eps_W = torch.mul(self.function_f(self.eps_i), self.function_f(self.eps_j)) # dimension is R^q*p / epsilon W = f(eps_i)f(eps_j)
         eps_B = self.function_f(self.eps_j.squeeze(-1)) # dimension is R^q / epsilon B = f(eps_j)
 
