@@ -16,8 +16,8 @@ class Factorised_noisy_layer(nn.Module):
         # why use register_buffer? when if you want to use some parameters for designing layer and don't include both eps parameters in backpropagate process. 
         
         # initialize parameter.
-        self.sigma_W = nn.Parameter(torch.full((output_q,input_p), init_sigma))
-        self.sigma_B = nn.Parameter(torch.full((output_q,), init_sigma))
+        self.sigma_W = nn.Parameter(torch.full((output_q,input_p), init_sigma)) # (q,p) 행렬 사이즈에 맞게 초기 sigma 값으로 행렬을 채워준다.
+        self.sigma_B = nn.Parameter(torch.full((output_q,), init_sigma)) # (q) 행렬 사이즈에 맞게 초기 sigma 값으로 채워준다.
 
         self.mu_W = nn.Parameter(torch.empty(output_q,input_p)) # 파라미터 값이 빈 행렬을 만들어 준다.
         self.mu_B = nn.Parameter(torch.empty(output_q))
@@ -36,10 +36,10 @@ class Factorised_noisy_layer(nn.Module):
         
         return F.linear(x, no_Wieght, no_Bias) # y = no_W * X + no_B
 
-    def function_f(self, eps):
-        sign = torch.sign(eps)
-        eps_abs = eps.abs()
-        f_x = sign * eps_abs.sqrt()
+    def function_f(self, eps): # factorised에서 사용되는 f 함수.
+        sign = torch.sign(eps) # 부호함수로, 0보다 크면 1, 0과 같으면 0, 0보다 작으면 -1을 반환하는 함수이다.
+        eps_abs = eps.abs() # 함수에 들어온 eps 값에 절대값으로 바꿔준다.
+        f_x = sign * eps_abs.sqrt() # f(x) = sign(x) * sqrt(abs(x))로 완성해준다.
         return f_x
 
 class Independent_noisy_layer(nn.Module):
@@ -52,8 +52,8 @@ class Independent_noisy_layer(nn.Module):
         # why use register_buffer? when if you want to use some parameters for designing layer and don't include both eps parameters in backpropagate process. 
         
         # initialize parameter.
-        self.sigma_W = nn.Parameter(torch.full((output_q,input_p), init_sigma))
-        self.sigma_B = nn.Parameter(torch.full((output_q,), init_sigma))
+        self.sigma_W = nn.Parameter(torch.full((output_q,input_p), init_sigma)) # (q,p) 행렬 사이즈에 맞게 초기 sigma 값으로 행렬을 채워준다.
+        self.sigma_B = nn.Parameter(torch.full((output_q,), init_sigma)) # (q) 행렬 사이즈에 맞게 초기 sigma 값으로 행렬을 채워준다.
 
         self.mu_W = nn.Parameter(torch.empty(output_q, input_p)) # 파라미터 값이 빈 행렬을 만들어 준다.
         self.mu_B = nn.Parameter(torch.empty(output_q))
@@ -73,12 +73,6 @@ class Independent_noisy_layer(nn.Module):
         no_Wieght = self.mu_W + self.sigma_W * eps_W # calculate noisy_Wieght
         
         return F.linear(x, no_Wieght, no_Bias) # y = no_W * X + no_B
-
-    def function_f(self, eps):
-        sign = torch.sign(eps)
-        eps_abs = eps.abs()
-        f_x = sign * eps_abs.sqrt()
-        return f_x
 
 class Q(nn.Module):
     def __init__(self, state_space, action_space):
