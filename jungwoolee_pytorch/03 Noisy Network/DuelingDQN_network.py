@@ -28,12 +28,13 @@ class Factorised_noisy_layer(nn.Module):
         self.eps_i.normal_() # assign weight epsilon from normal distribution. register_buffer에 등록된 parameter를 매번 normal 즉 gaussion분포에서 가져옴.
         self.eps_j.normal_() # assign bias epsilon.
 
-        eps_W = torch.mul(self.function_f(self.eps_i), self.function_f(self.eps_j)) # dimension is R^q*p
-        eps_B = self.function_f(self.eps_j.squeeze(-1)) # dimension is R^q
+        eps_W = torch.mul(self.function_f(self.eps_i), self.function_f(self.eps_j)) # dimension is R^q*p / epsilon W = f(eps_i)f(eps_j)
+        eps_B = self.function_f(self.eps_j.squeeze(-1)) # dimension is R^q / epsilon B = f(eps_j)
 
         no_Bias = self.mu_B + self.sigma_B * eps_B # calculate noisy_Bias.
-
-        return F.linear(x, self.mu_W + self.sigma_W * eps_W, no_Bias)
+        no_Wieght = self.mu_W + self.sigma_W * eps_W # calculate noisy_Wieght
+        
+        return F.linear(x, no_Wieght, no_Bias) # y = no_W * X + no_B
 
     def function_f(self, eps):
         sign = torch.sign(eps)
@@ -69,8 +70,9 @@ class Independent_noisy_layer(nn.Module):
         eps_B = self.eps_B # dimension is R^q
 
         no_Bias = self.mu_B + self.sigma_B * eps_B # calculate noisy_Bias.
-
-        return F.linear(x, self.mu_W + self.sigma_W * eps_W, no_Bias)
+        no_Wieght = self.mu_W + self.sigma_W * eps_W # calculate noisy_Wieght
+        
+        return F.linear(x, no_Wieght, no_Bias) # y = no_W * X + no_B
 
     def function_f(self, eps):
         sign = torch.sign(eps)
