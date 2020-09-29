@@ -12,6 +12,11 @@
 self.replay_buffer = [0 for i in range(buffer_size)] # set rplay buffer size.
 self.array_tree = [0 for i in range((buffer_size * 2) - 1)] # set sum_tree size (double of buffer size)
 ```
+<p align="center">
+    <img src="/images/1_init_01.PNG" width="400">
+    <img src="/images/1_init_02.PNG" width="400">
+</p>
+
 - - -
 
 ### 2. Add
@@ -47,7 +52,7 @@ self.array_tree[self.tree_index] = priority # append priority at current sum_tre
 ### 4. Search
 * uniform distribution에서 선택된 value들을 바탕으로 leaf node가 가진 구간 범위(확률 값이다.)에 따라 sampling 된다.
 * 이 코드의 예제에 따르면, 7,8번 node가 가진 5는 [0,1,2,3,4,5] [6,7,8,9,10]이 선택될 수 있다. (uniform의 범위 (0,99))
-* 각각 5% 정도의 선택활률을 표현하는 예제이다. 전체 100개가 1번씩 무조건 나온다는 가정이므로, 위 0 ~ 10의 숫자가 나올 경우만 선택된다.
+* 각각 6%, 5% 정도의 선택확률을 표현하는 예제이다. 전체 100개가 1번씩 무조건 나온다는 가정이므로, 위 0 ~ 10의 숫자가 나올 경우만 선택된다.
 * uniform distribution에서 선택된 input 값은 아래 규칙에 의해 탐색을 한다.
 * 1. 왼쪽 자식 node가 input보다 크거나 같다면, input 값 그대로 왼쪽 자식 node로 이동.
 * 2. 왼쪽 자식 node가 input보다 작다면, input = input - left node 한 후, 오른쪽 자식 node로 이동.
