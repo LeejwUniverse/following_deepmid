@@ -113,7 +113,7 @@ while True:
 
 1. 최종 Array 정보 & 원본 Data 분포. 
 <div align="center">
-    <img src="https://github.com/LeejwUniverse/following_deepmid/blob/master/jungwoolee_pytorch/100%20Algorithm_For_RL/01%20sum_tree/images/4_finish_01.png" width="400">
+    <img src="https://github.com/LeejwUniverse/following_deepmid/blob/master/jungwoolee_pytorch/100%20Algorithm_For_RL/01%20sum_tree/images/4_finish_01.png" width="400" vertical-align="middle">
     <img src="https://github.com/LeejwUniverse/following_deepmid/blob/master/jungwoolee_pytorch/100%20Algorithm_For_RL/01%20sum_tree/images/data_origin.png" width="400">
 </div>
 
