@@ -112,9 +112,9 @@ while True:
 * test를 통해 정해진 priority 확률분포에 맞게 sampling 되는 것을 확인 할 수 있다.
 
 1. 최종 Array 정보 & 원본 Data 분포. 
-<div align="center" style="vertical-align: middle;">
-    <img src="https://github.com/LeejwUniverse/following_deepmid/blob/master/jungwoolee_pytorch/100%20Algorithm_For_RL/01%20sum_tree/images/4_finish_01.png" width="400">
-    <img src="https://github.com/LeejwUniverse/following_deepmid/blob/master/jungwoolee_pytorch/100%20Algorithm_For_RL/01%20sum_tree/images/data_origin.png" width="400">
+<div align="center">
+    <img src="https://github.com/LeejwUniverse/following_deepmid/blob/master/jungwoolee_pytorch/100%20Algorithm_For_RL/01%20sum_tree/images/4_finish_01.png" width="500" style="vertical-align: middle;">
+    <img src="https://github.com/LeejwUniverse/following_deepmid/blob/master/jungwoolee_pytorch/100%20Algorithm_For_RL/01%20sum_tree/images/data_origin.png" width="500">
 </div>
 
 2. sum tree 실험(100, 1000, 10000, 1000000).
