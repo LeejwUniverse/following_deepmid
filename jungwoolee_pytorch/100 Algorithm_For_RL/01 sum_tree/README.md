@@ -1,6 +1,6 @@
 # Sum Tree
 * sum tree는 binary tree 구조로 sampling에 있어서 ![equation](https://latex.codecogs.com/gif.latex?%5Clog%20N) 을 보장한다.
-* ex) 1,000,000 개의 데이터일경우 마지막 data를 단순 서치하면 1,000,000 인데, $$\log 1000000 = 6 이다.
+* ex) 1,000,000 개의 데이터일경우 마지막 data를 단순 서치하면 1,000,000 인데, ![equation](https://latex.codecogs.com/gif.latex?%5Clog%201000000%20%3D%206)이다.
 * 재밌는 특징으로 단순히 leaf node까지의 search만으로 확률적 특성이 반영된 sampling이 가능하다.
 - - -
 
