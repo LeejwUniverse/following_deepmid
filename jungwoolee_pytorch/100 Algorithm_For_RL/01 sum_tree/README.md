@@ -13,8 +13,8 @@ self.replay_buffer = [0 for i in range(buffer_size)] # set rplay buffer size.
 self.array_tree = [0 for i in range((buffer_size * 2) - 1)] # set sum_tree size (double of buffer size)
 ```
 <p align="center">
-    <img src="/images/1_init_01.PNG" width="400">
-    <img src="/images/1_init_02.PNG" width="400">
+    <img src="https://github.com/LeejwUniverse/following_deepmid/tree/master/jungwoolee_pytorch/100%20Algorithm_For_RL/01%20sum_tree/images/1_init_01.PNG" width="400">
+    <img src="https://github.com/LeejwUniverse/following_deepmid/tree/master/jungwoolee_pytorch/100%20Algorithm_For_RL/01%20sum_tree/images/1_init_02.PNG" width="400">
 </p>
 
 - - -
