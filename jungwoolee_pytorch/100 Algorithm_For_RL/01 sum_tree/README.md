@@ -29,6 +29,11 @@ if self.buffer_index == self.buffer_size: # if replay buffer index achive last i
     self.buffer_index = 0 # change first index (0 zero)
 ```
 * 코드상에서 현재 위치를 기록하는 self.buffer_index와 self.tree_index에 해당하는 위치에 data와 priority를 각각 저장한다.
+```python
+self.replay_buffer[self.buffer_index] = data # append data at current replay buffer index.
+self.array_tree[self.tree_index] = priority # append priority at current sum_tree leaf node index.
+
+```
 
 - - -
 
