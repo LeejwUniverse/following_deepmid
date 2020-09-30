@@ -46,7 +46,7 @@ self.array_tree[self.tree_index] = priority # append priority at current sum_tre
 * Add에서 새로운 data가 추가되면, sum tree의 leaf node중 변경된 leaf node로 부터 root까지 sum tree의 node들을 update해줘야 한다.
 * leaf node의 parent node는 parent node = left node + right node의 수식으로 update 된다.
 * root에 도달하면 종료된다. 여기서는 tree index가 0가 된다면 종료된다.
-#### 1. tree index 0 update 과정.
+#### 1. tree index 7 update 과정 (첫 시작 leaf node).
 <div align="center">
     <img src="https://github.com/LeejwUniverse/following_deepmid/blob/master/jungwoolee_pytorch/100%20Algorithm_For_RL/01%20sum_tree/images/2_update_01.PNG" width="500">
     <img src="https://github.com/LeejwUniverse/following_deepmid/blob/master/jungwoolee_pytorch/100%20Algorithm_For_RL/01%20sum_tree/images/2_update_02.PNG" width="500">
@@ -56,7 +56,7 @@ self.array_tree[self.tree_index] = priority # append priority at current sum_tre
     <img src="https://github.com/LeejwUniverse/following_deepmid/blob/master/jungwoolee_pytorch/100%20Algorithm_For_RL/01%20sum_tree/images/2_update_04.PNG" width="500">
 </div>
 
-#### 2. tree index 1 update 과정.
+#### 2. tree index 8 update 과정.
 <div align="center">
     <img src="https://github.com/LeejwUniverse/following_deepmid/blob/master/jungwoolee_pytorch/100%20Algorithm_For_RL/01%20sum_tree/images/2_update_05.PNG" width="500">
     <img src="https://github.com/LeejwUniverse/following_deepmid/blob/master/jungwoolee_pytorch/100%20Algorithm_For_RL/01%20sum_tree/images/2_update_06.PNG" width="500">
