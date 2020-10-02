@@ -9,7 +9,7 @@ class Factorised_noisy_layer(nn.Module):
     def __init__(self, input_p, output_q, sigma_zero=0.5):
         super(Factorised_noisy_layer, self).__init__()
         init_mu = 1 / math.sqrt(input_p) # mu의 초기 값을 위함. mu[-1/sqrt(p),+1/sqrt(p)]
-        init_sigma = sigma_zero / math.sqrt(input_p) # sigma의 초기값을 위함. sigma_0 / sqrt(|p|) input_p값이 torch.Tensor type이 아니라 파이썬 라이브러리 sqrt씀.
+        init_sigma = sigma_zero / math.sqrt(input_p) # sigma의 초기값을 위함. sigma_0 / sqrt(p) input_p값이 torch.Tensor type이 아니라 파이썬 라이브러리 sqrt씀.
         
         self.register_buffer("eps_i",torch.zeros(1, input_p)) # Gaussian variable, dimension is R^p
         self.register_buffer("eps_j",torch.zeros(output_q, 1)) # Gaussian variables, dimension is R^q
