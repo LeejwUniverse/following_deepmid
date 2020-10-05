@@ -29,7 +29,7 @@ class kd_tree():
             return Node(data_set[0], cur_dim, data_set, None, None)
         data_set = sorted(data_set, key=lambda x: x[cur_dim]) # have to sort every time, because dimention of axis is always changed.
         
-        if data_len == 2:
+        if data_len == 2: # In case of two data points, bigger data point is stored at the parent node and second data point is stored at the left child node. 
             return Node(data_set[1], cur_dim, data_set, self.add_node(data_set[:1], level + 1), None)
         
         left_mid = len(data_set)//2
@@ -42,20 +42,24 @@ class kd_tree():
         return kdtree
 
     def search(self, x, kdtree):
+        # find closest neighbor data point. And calculate distance.
         cur_node = kdtree
-
         while True:
-            
-            if cur_node.parent == None or (cur_node.left_child == None and cur_node.right_child == None):
-                break
-            elif cur_node.parent[cur_node.dim] > x[cur_node.dim]:
-                cur_node = cur_node.left_child
+            if cur_node.parent[cur_node.dim] > x[cur_node.dim]:
+                if cur_node.left_child != None:
+                    cur_node = cur_node.left_child
+                else:
+                    break
             else:
-                cur_node = cur_node.right_child
+                if cur_node.right_child != None:
+                    cur_node = cur_node.right_child
+                else:
+                    break
        
         return cur_node.parent, self.euclidean_distance(x, cur_node.parent)
     
     def preorder(self, store_node, cur_node, level):
+        # traversal tree.
         store_node.append([level,cur_node.parent])
         if cur_node.left_child != None:
             self.preorder(store_node, cur_node.left_child, level+1)
@@ -85,10 +89,10 @@ def main():
     print(list_temp)
     print(list_temp[0:5])
     print()
-    list_temp = [[7,2],[5,4],[9,6],[2,3],[4,7],[8,1]]
+    ##list_temp = [[7,2],[5,4],[9,6],[2,3],[4,7],[8,1]]
     kd = kdtree.construct_kdtree(list_temp)
     kdtree.print_all(kd)
-    x = [50,50]
-    kdtree.search(x,kd)
+    x = [10,2]
+    print(kdtree.search(x,kd))
 if __name__ == '__main__':
     main()
