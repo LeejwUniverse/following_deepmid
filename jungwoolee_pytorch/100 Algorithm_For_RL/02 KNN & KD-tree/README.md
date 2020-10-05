@@ -3,7 +3,7 @@
 ---
 
 # Todo list
-- [X] Implementation basic KNN (calculate all data point using euclidean distance)
+- [X] Implementation basic KNN (calculate all data points using euclidean distance)
 - [X] Implementation KNN with KD-tree (using median)
 
 1. K-NN with Kd-tree
